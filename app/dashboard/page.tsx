@@ -42,8 +42,8 @@ export default function Dashboard() {
 
 const acc = useSelector((state) => state.ui.accounts)
 const trans = useSelector((state) => state.ui.transactions)
-const creditCards = useSelector((state) => state.ui.credit)
 
+console.log(acc)
 console.log(trans)
 
   
@@ -92,6 +92,9 @@ console.log(trans)
 
         {acc.length > 0 ? ( <>
 
+
+<h4>Account Type : {acc[0].type} </h4>
+<h4>Balance  : {acc[0].balances.available} </h4>
 
 
 

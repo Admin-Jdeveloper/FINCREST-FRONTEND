@@ -54,7 +54,7 @@ export default function Home() {
       setloader(true)
       await fetchAccounts();
       await fetchTransactions();
-      await fetchOwnerDetails();
+   
       setloader(false)
       router.push('/dashboard');
     } catch (err) {
@@ -91,29 +91,8 @@ export default function Home() {
   };
 
   // Fetch credit card details
-  const fetchCreditCardDetails = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/credit_cards');
-      const data = await response.json();
-      setCreditCards(data);
-      console.log(data)
-      dispatch(add_creditdetails(data));
-    } catch (err) {
-      console.error('Failed to fetch credit card details');
-    }
-  };
-
-  const fetchOwnerDetails = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/identity/get');
-      const data = await response.json();
-      console.log("OWNER DETAILS") 
-      console.log(data)
-      // dispatch(add_creditdetails(data));
-    } catch (err) {
-      console.error('Failed to fetch Owner details');
-    }
-  };
+ 
+ 
 
   return (
 
