@@ -74,36 +74,34 @@ console.log(trans)
     ],
   };
 
-  const creditCardBalances = {
-    labels: creditCards.map((card) => card.name),
-    datasets: [
-      {
-        label: "Credit Card Balances",
-        data: creditCards.map((card) => card.balances.current),
-        backgroundColor: "rgba(255, 159, 64, 0.6)",
-        borderColor: "rgba(255, 159, 64, 1)",
-        borderWidth: 1,
-      },
-    ],
-  };
+  
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <h1 className="text-3xl  font-bold mb-6">Dashboard</h1>  
+      <button  className=" bg-blue-300 rounded-md mb-4 text-center text-lg font-semibold  w-24 "  onClick={()=> window.print()} >Export</button>
+
 
       {loading && <p>Loading data...</p>}
 
       {/* Account Details Section */}
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Account Details</h2>
-        {acc.length > 0 ? (
-          <Bar data={accountBalances} />
+
+
+
+        {acc.length > 0 ? ( <>
+
+
+
+
+          <Bar data={accountBalances} /> </>
         ) : (
           <p>No account data available</p>
         )}
       </div>
 
-      {/* Transaction History Section */}
+    
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Transaction History</h2>
         {trans.length > 0 ? (
@@ -113,15 +111,9 @@ console.log(trans)
         )}
       </div>
 
-      {/* Credit Card Details Section */}
-       {/* <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Credit Card Details</h2>
-        {creditCards.length > 0 ? (
-          <Pie data={creditCardBalances} />
-        ) : (
-          <p>No credit card data available</p>
-        )}
-      </div> */}
+   
+
+      
     </div> 
   );
 }

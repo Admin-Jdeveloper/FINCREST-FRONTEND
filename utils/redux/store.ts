@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import uiReducer from './slice'
-import { apiSlice } from './myapi'
+
 
 
 export const makeStore = () => {

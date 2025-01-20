@@ -16,5 +16,6 @@ export default {
       },
     },
   },
-  plugins: [heroui()],
+  plugins: [heroui(), require("tailwind-scrollbar"),
+   ],
 } satisfies Config;

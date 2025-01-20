@@ -20,6 +20,7 @@ export default function Home() {
   const [creditCards, setCreditCards] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [loader,setloader] = useState(false)
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -50,9 +51,11 @@ export default function Home() {
       const data = await response.json();
       console.log('Access Token:', data.accessToken);
 
+      setloader(true)
       await fetchAccounts();
       await fetchTransactions();
-      await fetchCreditCardDetails();
+      await fetchOwnerDetails();
+      setloader(false)
       router.push('/dashboard');
     } catch (err) {
       console.error('Failed to exchange public token');
@@ -100,19 +103,37 @@ export default function Home() {
     }
   };
 
+  const fetchOwnerDetails = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/identity/get');
+      const data = await response.json();
+      console.log("OWNER DETAILS") 
+      console.log(data)
+      // dispatch(add_creditdetails(data));
+    } catch (err) {
+      console.error('Failed to fetch Owner details');
+    }
+  };
+
   return (
+
+loader ?  <div className="flex items-center justify-center ">
+<div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+</div>
+
+:
     <div>
      
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {!linkToken && (
-        <button className=' text-center pt-4 lg:pt-5 ' onClick={fetchLinkToken} disabled={loading}>
-          {loading ? 'Loading...' : 'Connect Bank Account'}
+        <button className=' text-center h-14 text-sm  pt-2 w-24 lg:pt-5 ' onClick={fetchLinkToken} disabled={loading}>
+          {loading ? 'Loading...' : 'Connect Plaid'}
         </button>
       )}
 
       {linkToken && (
-        <PlaidLink className="mt-4 h-16 z-10   font-semibold text-base  w-24" token={linkToken} onSuccess={handleOnSuccess}>
+        <PlaidLink className="mt-3 h-16 z-10   font-semibold text-base  w-24" token={linkToken} onSuccess={handleOnSuccess}>
           Bank Connect
         </PlaidLink>
       )}
