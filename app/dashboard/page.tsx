@@ -35,7 +35,7 @@ ChartJS.register(
 export default function Dashboard() {
   const [accounts, setAccounts] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  // const [creditCards, setCreditCards] = useState([]);
+  
   const [loading, setLoading] = useState(false);
 
 

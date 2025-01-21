@@ -1,11 +1,10 @@
-// components/FinanceGuard.tsx
+
 
 "use client"
 
-// import { useEffect } from "react";
+
 import { Chart }  from "chart.js";
-// import {Chart as ChartJs} from "chart.js"
-// import { Doughnut } from "react-chartjs-2";
+
 import {  useEffect } from "react";
 import Connector from "./Connector"
 import {

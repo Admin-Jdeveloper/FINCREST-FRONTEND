@@ -7,13 +7,10 @@ export const makeStore = () => {
   return configureStore({
   
     reducer: {
-       // Dynamically adds the reducer for API caching  
-        ui: uiReducer, // Your global state slice
+        
+        ui: uiReducer, //  global state slice
       },
-      // middleware: getDefaultMiddleware =>
-      //   getDefaultMiddleware()
-          
-      //     .concat(apiSlice.middleware)
+     
   })
 }
 

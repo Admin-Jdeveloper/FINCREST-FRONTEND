@@ -48,15 +48,18 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ publicToken }),
       });
+      setloader(true)
       const data = await response.json();
       console.log('Access Token:', data.accessToken);
 
-      setloader(true)
+      
       await fetchAccounts();
       await fetchTransactions();
    
       setloader(false)
       router.push('/dashboard');
+      setloader(false)
+     
     } catch (err) {
       console.error('Failed to exchange public token');
     } finally {
@@ -90,7 +93,7 @@ export default function Home() {
     }
   };
 
-  // Fetch credit card details
+  
  
  
 
